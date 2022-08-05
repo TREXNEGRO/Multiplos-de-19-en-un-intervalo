@@ -1,0 +1,62 @@
+#include <stdio.h>
+
+int leerNumero(); //Para leer los limites inferior y superior del intervalo
+int sonPositivos(int x, int y); //Para verificar si los limites ingresados (argumentos) son ambos positivos
+int esMultiplode19(int n); //Para verificar si un número (argumento) es múltiplo de 19
+void mostrarResultado(int n); //Para mostrar el mensaje con el resultado encontrado (cantidad de multiplos)
+
+int main (){
+	int LimSup = 0, LimInf = 0;
+	int i = 0;
+	int cont = 0;
+	
+	do{
+	printf("Ingrese limite inferior: ");
+	LimInf = leerNumero();
+	printf("Ingrese limite superior: ");
+	LimSup = leerNumero();
+	}while(sonPositivos(LimInf, LimSup) != 1);
+	
+	for(i = LimInf; i <= LimSup; i++){
+		if(esMultiplode19(i) == 1){
+			cont++;
+		}
+	}
+	
+	mostrarResultado(cont);
+	
+	
+	
+	return 0;
+}
+
+int leerNumero(){
+	int lim = 0;
+	scanf("%d", &lim);
+	return lim;
+}
+int sonPositivos(int x, int y){
+	if(x > 0){
+		if(y > 0){
+			return 1;
+		}else {
+			return 0;
+		}
+	}else{
+		return 0;
+	}
+	return 0;
+}
+
+int esMultiplode19(int n){
+	if(n % 19 == 0){
+		return 1;
+	}else{
+		return 0;
+	}
+}
+
+void mostrarResultado(int n){
+	printf("Existen %d multiplos de 19 en el intervalo", n);
+}
+
